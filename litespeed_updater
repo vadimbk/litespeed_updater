@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Simple LiteSpeed updater - works for both LSE and OLS
+# For OLS: check version before update
+# For LSE: let lsup.sh handle version checking
+
+# Check if it's OLS (free version)
+if /usr/local/lsws/bin/lshttpd -v 2>/dev/null | grep -q "Open LiteSpeed"; then
+    # OLS - check version first
+    CURRENT_VERSION=$(cat /usr/local/lsws/VERSION 2>/dev/null)
+    LATEST_VERSION=$(curl -s https://openlitespeed.org/packages/release 2>/dev/null)
+    
+    if [ -n "$CURRENT_VERSION" ] && [ -n "$LATEST_VERSION" ] && [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+        /usr/local/lsws/admin/misc/lsup.sh
+    fi
+else
+    # LSE - just run lsup.sh, it handles version checking internally
+    /usr/local/lsws/admin/misc/lsup.sh
+fi
