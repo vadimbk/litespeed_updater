@@ -18,7 +18,7 @@ Simple bash script for automatic LiteSpeed Web Server updates via cron. Works wi
 
 1. Download the script:
 ```bash
-wget https://raw.githubusercontent.com/yourusername/litespeed-updater/main/litespeed-updater
+wget https://raw.githubusercontent.com/vadimbk/litespeed-updater/main/litespeed-updater
 ```
 
 2. Make it executable:
