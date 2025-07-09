@@ -4,6 +4,9 @@
 # For OLS: check version before update
 # For LSE: let lsup.sh handle version checking
 
+export TERM=xterm
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 # Check if it's OLS (free version)
 if /usr/local/lsws/bin/lshttpd -v 2>/dev/null | grep -q "Open LiteSpeed"; then
     # OLS - check version first
